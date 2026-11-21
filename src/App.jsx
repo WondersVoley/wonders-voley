@@ -1,3 +1,4 @@
+
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -5,15 +6,12 @@ import WhatsAppButton from "./components/WhatsAppButton";
 function App() {
   return (
     <>
-      <Header />
-
-      <Routes>
-        {/* Aquí van todas tus rutas actuales */}
-      </Routes>
-
+      <Header home />
+      <Home />
       <WhatsAppButton />
-
-      <Footer />
     </>
   );
 }
+
+export default App;
+
