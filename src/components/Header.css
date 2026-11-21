@@ -1,0 +1,518 @@
+
+/* =====================================
+   WONDERS VOLEY - HEADER
+   ===================================== */
+
+.w-header {
+  --w-red: #D12A20;
+  --w-red-dark: #A91F18;
+  --w-red-light: #FF6054;
+  --w-black: #080808;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--w-red);
+  color: #fff;
+}
+
+.w-header--dark {
+  background: #171717;
+}
+
+/* CONTENEDOR */
+
+.w-header__inner {
+  width: min(100% - 64px, 1480px);
+  min-height: 92px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+/* LOGOTIPO */
+
+.w-header__brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 215px;
+}
+
+.w-header__brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 75px;
+  object-fit: contain;
+}
+
+/* MENÚ ESCRITORIO */
+
+.w-header__desktop ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2vw, 38px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.w-header__desktop a {
+  position: relative;
+  display: inline-block;
+  padding: 12px 0;
+
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  transition: opacity 0.25s ease;
+}
+
+.w-header__desktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+
+  width: 0;
+  height: 2px;
+  background: #fff;
+
+  transition: width 0.3s ease;
+}
+
+.w-header__desktop a:hover::after,
+.w-header__desktop a:focus-visible::after {
+  width: 100%;
+}
+
+.w-header__desktop a:hover {
+  opacity: 0.85;
+}
+
+/* HAMBURGUESA */
+
+.w-header__toggle {
+  display: none;
+  position: relative;
+  z-index: 23;
+
+  width: 44px;
+  height: 44px;
+  padding: 7px;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.w-header__toggle span {
+  display: block;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+
+  transition:
+    width 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.2s ease;
+}
+
+.w-header__toggle span:nth-child(1) {
+  width: 30px;
+}
+
+.w-header__toggle span:nth-child(2) {
+  width: 22px;
+}
+
+.w-header__toggle span:nth-child(3) {
+  width: 15px;
+}
+
+/* TRANSFORMACIÓN A X */
+
+.w-header--open .w-header__toggle span:nth-child(1) {
+  width: 28px;
+  transform: translateY(9px) rotate(45deg);
+}
+
+.w-header--open .w-header__toggle span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.w-header--open .w-header__toggle span:nth-child(3) {
+  width: 28px;
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* OSCURECIMIENTO DEL FONDO */
+
+.w-header__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease;
+}
+
+.w-header__backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* PANEL LATERAL */
+
+.w-header__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 21;
+
+  width: min(82vw, 440px);
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--w-black);
+  padding: 110px 36px 32px;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  transform: translateX(105%);
+  visibility: hidden;
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.4s ease;
+
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.w-header__drawer.is-open {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+/* ENLACES DEL MENÚ */
+
+.w-header__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.w-header__mobile-links a {
+  display: inline-block;
+
+  color: var(--w-red);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.w-header__mobile-links a:hover,
+.w-header__mobile-links a:focus-visible,
+.w-header__mobile-links a:active {
+  color: var(--w-red-light);
+  transform: translateX(10px);
+}
+
+/* ENLACES LEGALES */
+
+.w-header__legal {
+  margin-top: auto;
+  padding-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.w-header__legal::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  margin-bottom: 14px;
+  background: #333;
+}
+
+.w-header__legal a {
+  display: inline-block;
+  color: var(--w-red-light);
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.w-header__legal a:hover,
+.w-header__legal a:focus-visible {
+  color: #fff;
+  transform: translateX(8px);
+}
+
+/* =====================================
+   BREAKPOINTS
+   ===================================== */
+
+/* ESCRITORIO 4K */
+
+@media (min-width: 2560px) {
+  .w-header__inner {
+    max-width: 1800px;
+    min-height: 112px;
+  }
+
+  .w-header__brand {
+    width: 270px;
+  }
+
+  .w-header__desktop a {
+    font-size: 23px;
+  }
+}
+
+/* ESCRITORIO 1080P */
+
+@media (min-width: 1280px) and (max-width: 2559px) {
+  .w-header__inner {
+    max-width: 1480px;
+  }
+}
+
+/* TABLET HORIZONTAL */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .w-header__inner {
+    width: calc(100% - 48px);
+    min-height: 78px;
+    gap: 18px;
+  }
+
+  .w-header__brand {
+    width: 185px;
+  }
+
+  .w-header__desktop ul {
+    gap: 17px;
+  }
+
+  .w-header__desktop a {
+    font-size: 17px;
+  }
+}
+
+/* TABLET VERTICAL Y MÓVIL */
+
+@media (max-width: 1023px) {
+  .w-header__inner {
+    width: calc(100% - 36px);
+    min-height: 76px;
+  }
+
+  .w-header__brand {
+    width: 190px;
+  }
+
+  .w-header__desktop {
+    display: none;
+  }
+
+  .w-header__toggle {
+    display: flex;
+  }
+
+  .w-header--open .w-header__toggle {
+    position: fixed;
+    top: 16px;
+    right: max(18px, env(safe-area-inset-right));
+  }
+}
+
+/* TABLET VERTICAL */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .w-header__drawer {
+    width: min(76vw, 530px);
+    padding: 120px 48px 40px;
+  }
+
+  .w-header__mobile-links a {
+    font-size: 42px;
+  }
+}
+
+/* MÓVIL VERTICAL */
+
+@media (max-width: 599px) and (orientation: portrait) {
+  .w-header__inner {
+    min-height: 70px;
+  }
+
+  .w-header__brand {
+    width: 165px;
+  }
+
+  .w-header__drawer {
+    width: 84vw;
+    padding: 108px 26px max(26px, env(safe-area-inset-bottom));
+  }
+
+  .w-header__mobile-links {
+    gap: 22px;
+  }
+
+  .w-header__mobile-links a {
+    font-size: 33px;
+  }
+}
+
+/* MÓVIL HORIZONTAL */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .w-header__inner {
+    min-height: 62px;
+  }
+
+  .w-header__brand {
+    width: 155px;
+  }
+
+  .w-header__drawer {
+    width: 75vw;
+    padding: 70px 28px 20px;
+  }
+
+  .w-header__mobile-links {
+    gap: 8px;
+  }
+
+  .w-header__mobile-links a {
+    font-size: 24px;
+  }
+
+  .w-header__legal {
+    padding-top: 20px;
+  }
+
+  .w-header--open .w-header__toggle {
+    top: 9px;
+  }
+}
+
+/* ACCESIBILIDAD */
+
+@media (prefers-reduced-motion: reduce) {
+  .w-header *,
+  .w-header *::before,
+  .w-header *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+
+/* =====================================
+   AJUSTES DE TIPOGRAFÍA - HEADER
+   ===================================== */
+
+/* MENÚ ESCRITORIO */
+
+.w-header__desktop a {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ESCRITORIO 4K */
+
+@media (min-width: 2560px) {
+  .w-header__desktop a {
+    font-size: 19px;
+  }
+}
+
+/* TABLET HORIZONTAL */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .w-header__desktop a {
+    font-size: 14px;
+  }
+}
+
+/* MENÚ MÓVIL Y TABLET VERTICAL */
+
+.w-header__mobile-links a {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+
+/* =========================================
+   HEADER ESPECIAL HOME
+   ========================================= */
+
+.w-header--home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+/* Conservamos el diseño y dimensiones
+   del header original */
+
+.w-header--home .w-header__inner {
+  position: relative;
+  z-index: 1;
+}

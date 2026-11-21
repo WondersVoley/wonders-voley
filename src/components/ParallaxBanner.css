@@ -1,0 +1,281 @@
+
+/* =====================================
+   WONDERS - PARALLAX BANNER
+   ===================================== */
+
+.parallax-banner {
+  --banner-yellow: #FFD54A;
+  --banner-red: #D12A20;
+  --banner-easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #202020;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+
+  overflow: hidden;
+}
+
+/* FILTRO OSCURO */
+
+.parallax-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.60),
+    rgba(0, 0, 0, 0.72)
+  );
+}
+
+/* CONTENIDO */
+
+.parallax-banner__content {
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto;
+  padding: 110px 0;
+
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* TEXTO SUPERIOR */
+
+.parallax-banner__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  margin-bottom: 24px;
+
+  color: var(--banner-yellow);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(14px, 1.5vw, 19px);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* LÍNEAS DECORATIVAS */
+
+.parallax-banner__eyebrow::before,
+.parallax-banner__eyebrow::after {
+  content: "";
+
+  width: clamp(30px, 8vw, 115px);
+  height: 2px;
+
+  background: var(--banner-yellow);
+
+  transform: scaleX(0);
+
+  transition: transform 1s var(--banner-easing);
+}
+
+.parallax-banner.is-visible
+.parallax-banner__eyebrow::before,
+
+.parallax-banner.is-visible
+.parallax-banner__eyebrow::after {
+  transform: scaleX(1);
+}
+
+/* TÍTULO */
+
+.parallax-banner h2 {
+  margin: 0 0 20px;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(44px, 6vw, 90px);
+  font-weight: 800;
+  line-height: 1.05;
+
+  color: #FFFFFF;
+
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  transition:
+    opacity 0.9s ease 0.15s,
+    transform 0.9s var(--banner-easing) 0.15s;
+}
+
+.parallax-banner.is-visible h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DESCRIPCIÓN */
+
+.parallax-banner p {
+  max-width: 700px;
+  margin: 0 auto 35px;
+
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 1.7vw, 20px);
+  line-height: 1.7;
+
+  color: #E2E2E2;
+
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.9s ease 0.35s,
+    transform 0.9s var(--banner-easing) 0.35s;
+}
+
+.parallax-banner.is-visible p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* BOTÓN */
+
+.parallax-banner__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 32px;
+
+  background: var(--banner-red);
+  color: #FFFFFF;
+
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  border-radius: 3px;
+
+  opacity: 0;
+  transform: translateY(18px);
+
+  transition:
+    opacity 0.8s ease 0.5s,
+    transform 0.8s var(--banner-easing) 0.5s,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.parallax-banner.is-visible .parallax-banner__button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.parallax-banner__button:hover,
+.parallax-banner__button:focus-visible {
+  background: #A91F18;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.parallax-banner__button:focus-visible {
+  outline: 2px solid #FFD54A;
+  outline-offset: 4px;
+}
+
+/* =====================================
+   BREAKPOINTS
+   ===================================== */
+
+/* ESCRITORIO: ACTIVAMOS PARALLAX */
+
+@media (min-width: 1200px) and (hover: hover) and (pointer: fine) {
+  .parallax-banner {
+    background-attachment: fixed;
+  }
+}
+
+/* ESCRITORIO 4K */
+
+@media (min-width: 2560px) {
+  .parallax-banner {
+    min-height: 650px;
+  }
+
+  .parallax-banner__content {
+    max-width: 1400px;
+  }
+}
+
+/* TABLET */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .parallax-banner {
+    min-height: 460px;
+  }
+}
+
+/* MÓVIL */
+
+@media (max-width: 767px) {
+  .parallax-banner {
+    min-height: 410px;
+    background-attachment: scroll;
+  }
+
+  .parallax-banner__content {
+    padding: 80px 0;
+  }
+
+  .parallax-banner__eyebrow {
+    gap: 10px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
+
+  .parallax-banner h2 {
+    font-size: clamp(38px, 9vw, 60px);
+  }
+
+  .parallax-banner p {
+    font-size: 15px;
+  }
+
+  .parallax-banner__button {
+    padding: 14px 26px;
+  }
+}
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-banner {
+    background-attachment: scroll !important;
+  }
+
+  .parallax-banner *,
+  .parallax-banner__eyebrow::before,
+  .parallax-banner__eyebrow::after {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .parallax-banner__eyebrow::before,
+  .parallax-banner__eyebrow::after {
+    transform: scaleX(1) !important;
+  }
+}

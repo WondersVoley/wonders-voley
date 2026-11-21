@@ -1,0 +1,308 @@
+
+/* =========================================
+   WONDERS VOLEY - CONTACTO
+   ========================================= */
+
+.contact-home {
+  --contact-red: #D12A20;
+  --contact-black: #171717;
+
+  background: #F5F5F3;
+  padding: clamp(80px, 9vw, 140px) 24px;
+  scroll-margin-top: 30px;
+}
+
+.contact-home__container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: clamp(45px, 7vw, 110px);
+}
+
+/* INTRODUCCIÓN */
+
+.contact-home__eyebrow {
+  display: block;
+  margin-bottom: 18px;
+
+  color: var(--contact-red);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.contact-home__intro h2 {
+  margin: 0 0 28px;
+
+  color: var(--contact-black);
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(46px, 5vw, 75px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.contact-home__intro p {
+  margin: 0 0 18px;
+
+  color: #505050;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.contact-home__decoration {
+  display: block;
+  width: 75px;
+  height: 4px;
+  margin-top: 35px;
+  background: var(--contact-red);
+}
+
+/* CONTENEDOR DEL FORMULARIO */
+
+.contact-home__form {
+  min-width: 0;
+  padding: clamp(25px, 4vw, 48px);
+
+  background: #FFFFFF;
+  border: 1px solid #E7E7E7;
+  border-radius: 4px;
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.045);
+}
+
+/* =========================================
+   FORMULARIO
+   ========================================= */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  font-family: "Inter", sans-serif;
+}
+
+.contact-form h3 {
+  margin: 0 0 8px;
+
+  color: #171717;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.contact-form__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.contact-form__field label {
+  color: #252525;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.contact-form__field input,
+.contact-form__field select,
+.contact-form__field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 15px;
+
+  background: #FAFAFA;
+  color: #171717;
+
+  border: 1px solid #D8D8D8;
+  border-radius: 3px;
+
+  font: inherit;
+  font-size: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.contact-form__field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.contact-form__field input:focus,
+.contact-form__field select:focus,
+.contact-form__field textarea:focus {
+  outline: none;
+  border-color: #D12A20;
+  box-shadow: 0 0 0 3px rgba(209, 42, 32, 0.12);
+}
+
+/* PRIVACIDAD */
+
+.contact-form__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  color: #555;
+  font-size: 12px;
+  line-height: 1.6;
+
+  cursor: pointer;
+}
+
+.contact-form__privacy input {
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+
+  accent-color: #D12A20;
+  flex-shrink: 0;
+}
+
+.contact-form__privacy a {
+  color: #A91F18;
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+
+/* BOTÓN */
+
+.contact-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  gap: 12px;
+
+  padding: 16px 30px;
+
+  background: #D12A20;
+  color: #FFFFFF;
+
+  border: 0;
+  border-radius: 3px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.contact-form__submit:hover {
+  background: #A91F18;
+  transform: translateY(-2px);
+}
+
+.contact-form__submit svg {
+  transition: transform 0.25s ease;
+}
+
+.contact-form__submit:hover svg {
+  transform: translateX(4px);
+}
+
+.contact-form__submit:focus-visible {
+  outline: 3px solid #171717;
+  outline-offset: 3px;
+}
+
+/* MENSAJE DE PRUEBA */
+
+.contact-form__notice {
+  margin: 0;
+  padding: 14px;
+
+  background: #F5F5F3;
+  color: #454545;
+
+  border-left: 3px solid #D12A20;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   BREAKPOINTS
+   ========================================= */
+
+/* 4K */
+
+@media (min-width: 2560px) {
+  .contact-home__container {
+    max-width: 1600px;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .contact-home__container {
+    grid-template-columns: 1fr;
+    max-width: 760px;
+    gap: 45px;
+  }
+}
+
+/* MÓVIL */
+
+@media (max-width: 640px) {
+  .contact-home {
+    padding: 75px 20px;
+  }
+
+  .contact-home__container {
+    gap: 32px;
+  }
+
+  .contact-home__intro h2 {
+    font-size: clamp(42px, 10vw, 58px);
+  }
+
+  .contact-home__intro p {
+    font-size: 15px;
+  }
+
+  .contact-home__form {
+    padding: 25px 20px;
+  }
+
+  .contact-form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form h3 {
+    font-size: 30px;
+  }
+
+  .contact-form__submit {
+    width: 100%;
+  }
+}
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-form__submit,
+  .contact-form__submit svg {
+    transition: none;
+  }
+}

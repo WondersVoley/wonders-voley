@@ -1,0 +1,273 @@
+
+/* =========================================
+   WONDERS VOLEY - ACTIVIDADES
+   ========================================= */
+
+.activities {
+  background: #FFFFFF;
+  padding: clamp(70px, 8vw, 130px) 24px;
+}
+
+.activities__container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ENCABEZADO */
+
+.activities__heading {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.activities__eyebrow {
+  display: block;
+  margin-bottom: 12px;
+
+  color: #D12A20;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.activities__heading h2 {
+  margin: 0 0 16px;
+
+  color: #171717;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.activities__heading p {
+  max-width: 650px;
+  margin: 0 auto;
+
+  color: #555555;
+
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* GRID */
+
+.activities__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* TARJETAS */
+
+.activity-card {
+  position: relative;
+  display: block;
+
+  aspect-ratio: 4 / 5;
+  min-height: 350px;
+
+  background: #252525;
+
+  overflow: hidden;
+  border-radius: 4px;
+
+  color: #FFFFFF;
+  text-decoration: none;
+
+  isolation: isolate;
+}
+
+/* IMAGEN */
+
+.activity-card__image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.7s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* FILTRO OSCURO */
+
+.activity-card__overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.20) 45%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+
+  z-index: 1;
+}
+
+/* CONTENIDO */
+
+.activity-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 32px;
+
+  z-index: 2;
+}
+
+.activity-card__content h3 {
+  margin: 0 0 8px;
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(29px, 2.7vw, 40px);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.activity-card__content p {
+  margin: 0 0 20px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+
+  color: #E2E2E2;
+}
+
+.activity-card__link {
+  display: inline-block;
+
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #FFFFFF;
+
+  padding-bottom: 6px;
+  border-bottom: 2px solid #D12A20;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* LÍNEA INFERIOR ROJA */
+
+.activity-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: #D12A20;
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform 0.45s ease;
+
+  z-index: 3;
+}
+
+/* INTERACCIONES */
+
+.activity-card:hover .activity-card__image,
+.activity-card:focus-visible .activity-card__image {
+  transform: scale(1.07);
+}
+
+.activity-card:hover::after,
+.activity-card:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.activity-card:hover .activity-card__link,
+.activity-card:focus-visible .activity-card__link {
+  transform: translateX(8px);
+}
+
+.activity-card:focus-visible {
+  outline: 3px solid #D12A20;
+  outline-offset: 4px;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+/* ESCRITORIO 4K */
+
+@media (min-width: 2560px) {
+  .activities__container {
+    max-width: 1600px;
+  }
+
+  .activities__grid {
+    gap: 32px;
+  }
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .activities__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* MÓVIL */
+
+@media (max-width: 640px) {
+  .activities {
+    padding: 70px 20px;
+  }
+
+  .activities__heading {
+    margin-bottom: 35px;
+  }
+
+  .activities__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .activity-card {
+    aspect-ratio: 4 / 4.2;
+    min-height: 340px;
+  }
+
+  .activity-card__content {
+    padding: 25px;
+  }
+
+  .activity-card__content h3 {
+    font-size: 32px;
+  }
+}
+
+/* MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+  .activity-card *,
+  .activity-card::after {
+    transition: none !important;
+  }
+}

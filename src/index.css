@@ -1,0 +1,21 @@
+
+/* WONDERS VOLEY - ESTILOS GLOBALES */
+
+:root {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #171717;
+  background-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+#root {
+  min-height: 100vh;
+}
