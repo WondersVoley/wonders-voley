@@ -6,7 +6,7 @@ const activities = [
   {
     title: "Campus",
     description: "Experiencias deportivas inolvidables.",
-    image: "/images/imagen-3.webp",
+    image: "/images/home-campus.webp",
     href: "/campus/",
   },
   {
@@ -18,7 +18,7 @@ const activities = [
   {
     title: "Escuela de voleibol",
     description: "Aprende y crece con nosotros en Madrid.",
-    image: "/images/imagen-5.webp",
+    image: "/images/home-escuela.webp",
     href: "/escuela-voleibol/",
   },
 ];
