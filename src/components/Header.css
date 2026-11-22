@@ -516,3 +516,38 @@
   position: relative;
   z-index: 1;
 }
+
+
+/* =========================================
+   HEADER - MÁRGENES RESPONSIVE
+   ========================================= */
+
+/* TABLET VERTICAL */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  .w-header__inner {
+    width: calc(100% - 96px);
+    gap: 36px;
+  }
+
+  /* Mantener la X alineada al abrir menú */
+  .w-header--open .w-header__toggle {
+    right: max(48px, env(safe-area-inset-right));
+  }
+}
+
+/* MÓVIL VERTICAL Y HORIZONTAL */
+
+@media (max-width: 767px) {
+
+  .w-header__inner {
+    width: calc(100% - 56px);
+    gap: 30px;
+  }
+
+  /* Mantener la X alineada al abrir menú */
+  .w-header--open .w-header__toggle {
+    right: max(28px, env(safe-area-inset-right));
+  }
+}
