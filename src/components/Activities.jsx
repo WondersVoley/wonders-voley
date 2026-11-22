@@ -12,7 +12,7 @@ const activities = [
   {
     title: "Espinho",
     description: "Voleibol más allá de nuestras fronteras.",
-    image: "/images/imagen-4.webp",
+    image: "/images/home-espinho.webp",
     href: "/espinho/",
   },
   {
