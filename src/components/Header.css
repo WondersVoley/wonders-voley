@@ -1,31 +1,54 @@
 
-/* =====================================
-   WONDERS VOLEY - HEADER
-   ===================================== */
+/* ==========================================
+   WONDERS VOLEY
+   HEADER GENERAL - RESPONSIVE
+   ========================================== */
 
 .w-header {
   --w-red: #D12A20;
   --w-red-dark: #A91F18;
   --w-red-light: #FF6054;
   --w-black: #080808;
+  --w-white: #FFFFFF;
 
   position: sticky;
   top: 0;
   z-index: 1000;
+
   width: 100%;
   background: var(--w-red);
-  color: #fff;
+  color: var(--w-white);
 }
+
+/* ==========================================
+   VARIANTES DEL HEADER
+   ========================================== */
+
+/* Páginas de contacto y formularios */
 
 .w-header--dark {
   background: #171717;
 }
 
-/* CONTENEDOR */
+/* Home: superpuesto al Hero */
+
+.w-header--home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+}
+
+/* ==========================================
+   CONTENEDOR GENERAL
+   ========================================== */
 
 .w-header__inner {
-  width: min(100% - 64px, 1480px);
+  width: calc(100% - 64px);
+  max-width: 1480px;
   min-height: 92px;
+
   margin: 0 auto;
 
   display: flex;
@@ -34,61 +57,109 @@
   gap: 32px;
 }
 
-/* LOGOTIPO */
+/* ==========================================
+   ESCUDO WONDERS
+   ========================================== */
 
 .w-header__brand {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+
   flex-shrink: 0;
-  width: 215px;
+
+  width: 90px;
+
+  text-decoration: none;
 }
 
 .w-header__brand img {
   display: block;
+
   width: 100%;
   height: auto;
-  max-height: 75px;
+  max-height: 82px;
+
   object-fit: contain;
+  object-position: left center;
+
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
-/* MENÚ ESCRITORIO */
+/* Efecto discreto sobre el escudo */
+
+@media (hover: hover) {
+  .w-header__brand:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* ==========================================
+   MENÚ ESCRITORIO
+   ========================================== */
+
+.w-header__desktop {
+  display: block;
+}
 
 .w-header__desktop ul {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+
   gap: clamp(18px, 2vw, 38px);
+
   list-style: none;
+
   margin: 0;
   padding: 0;
+}
+
+.w-header__desktop li {
+  list-style: none;
 }
 
 .w-header__desktop a {
   position: relative;
   display: inline-block;
+
   padding: 12px 0;
 
-  color: #fff;
+  color: var(--w-white);
+
   text-decoration: none;
   text-transform: uppercase;
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
 
-  transition: opacity 0.25s ease;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+
+  transition:
+    opacity 0.25s ease,
+    color 0.25s ease;
 }
+
+/* Línea animada */
 
 .w-header__desktop a::after {
   content: "";
+
   position: absolute;
   left: 0;
   bottom: 6px;
 
   width: 0;
   height: 2px;
-  background: #fff;
 
-  transition: width 0.3s ease;
+  background: var(--w-white);
+
+  transition:
+    width 0.3s ease;
 }
 
 .w-header__desktop a:hover::after,
@@ -100,38 +171,52 @@
   opacity: 0.85;
 }
 
-/* HAMBURGUESA */
+/* ==========================================
+   HAMBURGUESA ASIMÉTRICA
+   ========================================== */
 
 .w-header__toggle {
   display: none;
+
   position: relative;
-  z-index: 23;
+  z-index: 50;
 
   width: 44px;
   height: 44px;
+
   padding: 7px;
 
+  flex-shrink: 0;
+
   flex-direction: column;
-  justify-content: center;
   align-items: flex-end;
+  justify-content: center;
+
   gap: 6px;
 
-  background: transparent;
   border: 0;
+  background: transparent;
+
   cursor: pointer;
+
+  -webkit-tap-highlight-color: transparent;
 }
 
 .w-header__toggle span {
   display: block;
+
   height: 3px;
-  background: #fff;
-  border-radius: 2px;
+
+  background: var(--w-white);
+  border-radius: 3px;
 
   transition:
     width 0.3s ease,
-    transform 0.3s ease,
+    transform 0.35s ease,
     opacity 0.2s ease;
 }
+
+/* Tres líneas desiguales */
 
 .w-header__toggle span:nth-child(1) {
   width: 30px;
@@ -145,31 +230,61 @@
   width: 15px;
 }
 
-/* TRANSFORMACIÓN A X */
+/* Interacción al pasar el cursor */
 
-.w-header--open .w-header__toggle span:nth-child(1) {
-  width: 28px;
-  transform: translateY(9px) rotate(45deg);
+@media (hover: hover) {
+  .w-header__toggle:not([aria-expanded="true"]):hover
+  span:nth-child(2) {
+    width: 30px;
+  }
+
+  .w-header__toggle:not([aria-expanded="true"]):hover
+  span:nth-child(3) {
+    width: 22px;
+  }
 }
 
-.w-header--open .w-header__toggle span:nth-child(2) {
+/* ==========================================
+   TRANSFORMACIÓN HAMBURGUESA -> X
+   ========================================== */
+
+.w-header--open
+.w-header__toggle span:nth-child(1) {
+  width: 28px;
+
+  transform:
+    translateY(9px)
+    rotate(45deg);
+}
+
+.w-header--open
+.w-header__toggle span:nth-child(2) {
   width: 0;
   opacity: 0;
 }
 
-.w-header--open .w-header__toggle span:nth-child(3) {
+.w-header--open
+.w-header__toggle span:nth-child(3) {
   width: 28px;
-  transform: translateY(-9px) rotate(-45deg);
+
+  transform:
+    translateY(-9px)
+    rotate(-45deg);
 }
 
-/* OSCURECIMIENTO DEL FONDO */
+/* ==========================================
+   CAPA OSCURA DETRÁS DEL MENÚ
+   ========================================== */
 
 .w-header__backdrop {
   position: fixed;
   inset: 0;
+
   z-index: 20;
 
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.78);
+
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 
   opacity: 0;
@@ -178,114 +293,159 @@
 
   transition:
     opacity 0.35s ease,
-    visibility 0.35s ease;
+    visibility 0s linear 0.35s;
 }
 
 .w-header__backdrop.is-open {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0s;
 }
 
-/* PANEL LATERAL */
+/* ==========================================
+   PANEL LATERAL NEGRO
+   ========================================== */
 
 .w-header__drawer {
   position: fixed;
+
   top: 0;
   right: 0;
-  z-index: 21;
+
+  z-index: 30;
 
   width: min(82vw, 440px);
+
   height: 100vh;
   height: 100dvh;
 
   display: flex;
   flex-direction: column;
 
-  background: var(--w-black);
-  padding: 110px 36px 32px;
+  padding:
+    110px
+    36px
+    max(32px, env(safe-area-inset-bottom));
 
+  background: var(--w-black);
+
+  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
 
-  transform: translateX(105%);
+  transform: translateX(110%);
   visibility: hidden;
+
+  box-shadow:
+    -12px 0 40px rgba(0, 0, 0, 0.3);
 
   transition:
     transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.4s ease;
-
-  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.3);
+    visibility 0s linear 0.4s;
 }
+
+/* Menú abierto */
 
 .w-header__drawer.is-open {
   transform: translateX(0);
   visibility: visible;
+
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
 }
 
-/* ENLACES DEL MENÚ */
+/* ==========================================
+   ENLACES DEL MENÚ MÓVIL
+   ========================================== */
 
 .w-header__mobile-links {
   display: flex;
   flex-direction: column;
+
   gap: 20px;
-  list-style: none;
 
   margin: 0;
   padding: 0;
+
+  list-style: none;
+}
+
+.w-header__mobile-links li {
+  list-style: none;
 }
 
 .w-header__mobile-links a {
   display: inline-block;
 
   color: var(--w-red);
+
   text-decoration: none;
   text-transform: uppercase;
 
   font-family: "Barlow Condensed", sans-serif;
+
   font-size: clamp(28px, 4vw, 40px);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.025em;
 
   transition:
     transform 0.25s ease,
     color 0.25s ease;
 }
 
+/* Desplazamiento lateral */
+
 .w-header__mobile-links a:hover,
 .w-header__mobile-links a:focus-visible,
 .w-header__mobile-links a:active {
   color: var(--w-red-light);
+
   transform: translateX(10px);
 }
 
-/* ENLACES LEGALES */
+/* ==========================================
+   ENLACES LEGALES
+   ========================================== */
 
 .w-header__legal {
   margin-top: auto;
+
   padding-top: 40px;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   gap: 12px;
 }
 
 .w-header__legal::before {
   content: "";
+
   display: block;
+
   width: 100%;
   height: 1px;
+
   margin-bottom: 14px;
-  background: #333;
+
+  background: #333333;
 }
 
 .w-header__legal a {
   display: inline-block;
+
   color: var(--w-red-light);
+
   font-family: "Inter", sans-serif;
   font-size: 13px;
+
   text-decoration: none;
 
   transition:
@@ -295,50 +455,93 @@
 
 .w-header__legal a:hover,
 .w-header__legal a:focus-visible {
-  color: #fff;
+  color: var(--w-white);
+
   transform: translateX(8px);
 }
 
-/* =====================================
-   BREAKPOINTS
-   ===================================== */
+/* ==========================================
+   ACCESIBILIDAD
+   ========================================== */
 
-/* ESCRITORIO 4K */
+.w-header__toggle:focus-visible,
+.w-header__brand:focus-visible,
+.w-header__desktop a:focus-visible,
+.w-header__mobile-links a:focus-visible,
+.w-header__legal a:focus-visible {
+  outline: 2px solid var(--w-white);
+  outline-offset: 5px;
+}
+
+/* ==========================================
+   ESCRITORIO 4K
+   >= 2560px
+   ========================================== */
 
 @media (min-width: 2560px) {
+
   .w-header__inner {
     max-width: 1800px;
-    min-height: 112px;
+    min-height: 116px;
   }
 
   .w-header__brand {
-    width: 270px;
+    width: 114px;
+  }
+
+  .w-header__brand img {
+    max-height: 105px;
+  }
+
+  .w-header__desktop ul {
+    gap: 42px;
   }
 
   .w-header__desktop a {
-    font-size: 23px;
+    font-size: 19px;
   }
 }
 
-/* ESCRITORIO 1080P */
+/* ==========================================
+   ESCRITORIO 1080P
+   1280px - 2559px
+   ========================================== */
 
 @media (min-width: 1280px) and (max-width: 2559px) {
+
   .w-header__inner {
     max-width: 1480px;
-  }
-}
-
-/* TABLET HORIZONTAL */
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .w-header__inner {
-    width: calc(100% - 48px);
-    min-height: 78px;
-    gap: 18px;
+    min-height: 92px;
   }
 
   .w-header__brand {
-    width: 185px;
+    width: 90px;
+  }
+
+  .w-header__desktop a {
+    font-size: 15px;
+  }
+}
+
+/* ==========================================
+   TABLET HORIZONTAL
+   1024px - 1279px
+   ========================================== */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  .w-header__inner {
+    width: calc(100% - 48px);
+    min-height: 84px;
+    gap: 20px;
+  }
+
+  .w-header__brand {
+    width: 80px;
+  }
+
+  .w-header__brand img {
+    max-height: 74px;
   }
 
   .w-header__desktop ul {
@@ -346,21 +549,16 @@
   }
 
   .w-header__desktop a {
-    font-size: 17px;
+    font-size: 14px;
   }
 }
 
-/* TABLET VERTICAL Y MÓVIL */
+/* ==========================================
+   TABLET VERTICAL Y MÓVIL
+   <= 1023px
+   ========================================== */
 
 @media (max-width: 1023px) {
-  .w-header__inner {
-    width: calc(100% - 36px);
-    min-height: 76px;
-  }
-
-  .w-header__brand {
-    width: 190px;
-  }
 
   .w-header__desktop {
     display: none;
@@ -370,40 +568,102 @@
     display: flex;
   }
 
+  .w-header__inner {
+    min-height: 96px;
+  }
+
+  /* X siempre visible sobre el panel */
+
   .w-header--open .w-header__toggle {
     position: fixed;
-    top: 16px;
-    right: max(18px, env(safe-area-inset-right));
+
+    top: 24px;
+    right: 28px;
+
+    z-index: 50;
   }
 }
 
-/* TABLET VERTICAL */
+/* ==========================================
+   TABLET VERTICAL
+   768px - 1023px
+   ========================================== */
 
 @media (min-width: 768px) and (max-width: 1023px) {
+
+  .w-header__inner {
+    width: calc(100% - 96px);
+    min-height: 104px;
+
+    gap: 36px;
+  }
+
+  .w-header__brand {
+    width: 100px;
+  }
+
+  .w-header__brand img {
+    max-height: 94px;
+  }
+
   .w-header__drawer {
     width: min(76vw, 530px);
-    padding: 120px 48px 40px;
+
+    padding:
+      120px
+      48px
+      max(40px, env(safe-area-inset-bottom));
   }
 
   .w-header__mobile-links a {
     font-size: 42px;
   }
+
+  .w-header--open .w-header__toggle {
+    top: 30px;
+
+    right: max(
+      48px,
+      env(safe-area-inset-right)
+    );
+  }
 }
 
-/* MÓVIL VERTICAL */
+/* ==========================================
+   MÓVIL VERTICAL
+   <= 767px
+   ========================================== */
 
-@media (max-width: 599px) and (orientation: portrait) {
+@media (max-width: 767px) {
+
   .w-header__inner {
-    min-height: 70px;
+    width: calc(100% - 56px);
+    min-height: 90px;
+
+    gap: 24px;
   }
+
+  /* ESCUDO ADAPTADO AL MÓVIL */
 
   .w-header__brand {
-    width: 165px;
+    width: 82px;
   }
+
+  .w-header__brand img {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+  }
+
+  /* PANEL NEGRO */
 
   .w-header__drawer {
     width: 84vw;
-    padding: 108px 26px max(26px, env(safe-area-inset-bottom));
+
+    padding:
+      108px
+      26px
+      max(30px, env(safe-area-inset-bottom));
   }
 
   .w-header__mobile-links {
@@ -412,27 +672,93 @@
 
   .w-header__mobile-links a {
     font-size: 33px;
+    font-weight: 600;
+  }
+
+  /* X ALINEADA */
+
+  .w-header--open .w-header__toggle {
+    top: 23px;
+
+    right: max(
+      28px,
+      env(safe-area-inset-right)
+    );
   }
 }
 
-/* MÓVIL HORIZONTAL */
+/* ==========================================
+   MÓVIL PEQUEÑO
+   <= 375px
+   ========================================== */
 
-@media (max-width: 767px) and (orientation: landscape) {
+@media (max-width: 375px) {
+
   .w-header__inner {
-    min-height: 62px;
+    width: calc(100% - 48px);
+    min-height: 84px;
   }
 
   .w-header__brand {
-    width: 155px;
+    width: 74px;
+  }
+
+  .w-header__brand img {
+    max-height: 72px;
+  }
+
+  .w-header__drawer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .w-header__mobile-links {
+    gap: 18px;
+  }
+
+  .w-header__mobile-links a {
+    font-size: 30px;
+  }
+
+  .w-header--open .w-header__toggle {
+    top: 20px;
+
+    right: max(
+      24px,
+      env(safe-area-inset-right)
+    );
+  }
+}
+
+/* ==========================================
+   MÓVIL HORIZONTAL
+   ========================================== */
+
+@media (max-width: 767px) and (orientation: landscape) {
+
+  .w-header__inner {
+    min-height: 68px;
+  }
+
+  .w-header__brand {
+    width: 62px;
+  }
+
+  .w-header__brand img {
+    max-height: 60px;
   }
 
   .w-header__drawer {
     width: 75vw;
-    padding: 70px 28px 20px;
+
+    padding:
+      76px
+      28px
+      max(20px, env(safe-area-inset-bottom));
   }
 
   .w-header__mobile-links {
-    gap: 8px;
+    gap: 10px;
   }
 
   .w-header__mobile-links a {
@@ -444,110 +770,25 @@
   }
 
   .w-header--open .w-header__toggle {
-    top: 9px;
+    top: 12px;
+
+    right: max(
+      28px,
+      env(safe-area-inset-right)
+    );
   }
 }
 
-/* ACCESIBILIDAD */
+/* ==========================================
+   REDUCIR MOVIMIENTO
+   ========================================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   .w-header *,
   .w-header *::before,
   .w-header *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
-  }
-}
-
-
-/* =====================================
-   AJUSTES DE TIPOGRAFÍA - HEADER
-   ===================================== */
-
-/* MENÚ ESCRITORIO */
-
-.w-header__desktop a {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-}
-
-/* ESCRITORIO 4K */
-
-@media (min-width: 2560px) {
-  .w-header__desktop a {
-    font-size: 19px;
-  }
-}
-
-/* TABLET HORIZONTAL */
-
-@media (min-width: 1024px) and (max-width: 1279px) {
-  .w-header__desktop a {
-    font-size: 14px;
-  }
-}
-
-/* MENÚ MÓVIL Y TABLET VERTICAL */
-
-.w-header__mobile-links a {
-  font-weight: 600;
-  letter-spacing: 0.025em;
-}
-
-
-/* =========================================
-   HEADER ESPECIAL HOME
-   ========================================= */
-
-.w-header--home {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  z-index: 1000;
-}
-
-/* Conservamos el diseño y dimensiones
-   del header original */
-
-.w-header--home .w-header__inner {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* =========================================
-   HEADER - MÁRGENES RESPONSIVE
-   ========================================= */
-
-/* TABLET VERTICAL */
-
-@media (min-width: 768px) and (max-width: 1023px) {
-
-  .w-header__inner {
-    width: calc(100% - 96px);
-    gap: 36px;
-  }
-
-  /* Mantener la X alineada al abrir menú */
-  .w-header--open .w-header__toggle {
-    right: max(48px, env(safe-area-inset-right));
-  }
-}
-
-/* MÓVIL VERTICAL Y HORIZONTAL */
-
-@media (max-width: 767px) {
-
-  .w-header__inner {
-    width: calc(100% - 56px);
-    gap: 30px;
-  }
-
-  /* Mantener la X alineada al abrir menú */
-  .w-header--open .w-header__toggle {
-    right: max(28px, env(safe-area-inset-right));
   }
 }
