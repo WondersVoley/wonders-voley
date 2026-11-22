@@ -1,0 +1,447 @@
+
+/* =========================================
+   WONDERS VOLEY - FOOTER
+   ========================================= */
+
+.w-footer {
+  --footer-black: #080808;
+  --footer-red: #D12A20;
+  --footer-red-light: #FF6054;
+  --footer-white: #FFFFFF;
+  --footer-gray: #BDBDBD;
+
+  width: 100%;
+
+  background: var(--footer-black);
+  color: var(--footer-white);
+
+  font-family: "Inter", sans-serif;
+}
+
+/* =========================================
+   CONTENEDOR
+   ========================================= */
+
+.w-footer__container {
+  width: min(100% - 64px, 1320px);
+  margin: 0 auto;
+
+  padding: 90px 0 30px;
+}
+
+/* =========================================
+   GRID PRINCIPAL
+   ========================================= */
+
+.w-footer__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 1.8fr)
+    repeat(3, minmax(0, 1fr));
+
+  gap: clamp(35px, 5vw, 80px);
+  align-items: start;
+}
+
+/* =========================================
+   LOGOTIPO
+   ========================================= */
+
+.w-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.w-footer__logo {
+  display: inline-flex;
+  align-items: center;
+
+  width: min(100%, 280px);
+
+  text-decoration: none;
+}
+
+.w-footer__logo img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.w-footer__logo:hover img {
+  opacity: 0.85;
+  transform: translateY(-3px);
+}
+
+/* LEMA */
+
+.w-footer__slogan {
+  margin: 25px 0 12px;
+
+  color: var(--footer-white);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+/* DESCRIPCIÓN */
+
+.w-footer__description {
+  max-width: 310px;
+
+  margin: 0;
+
+  color: var(--footer-gray);
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+/* =========================================
+   COLUMNAS DE NAVEGACIÓN
+   ========================================= */
+
+.w-footer__column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 0;
+}
+
+/* TÍTULOS */
+
+.w-footer__column h2 {
+  margin: 0 0 26px;
+
+  color: var(--footer-red-light);
+
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* LISTAS */
+
+.w-footer__column ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  width: 100%;
+
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.w-footer__column li {
+  width: 100%;
+}
+
+/* ENLACES */
+
+.w-footer__column a {
+  display: inline-block;
+
+  color: var(--footer-white);
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+
+  line-height: 1.5;
+  text-decoration: none;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* HOVER ROJO + DESPLAZAMIENTO */
+
+.w-footer__column a:hover,
+.w-footer__column a:focus-visible {
+  color: var(--footer-red-light);
+
+  transform: translateX(5px);
+}
+
+/* =========================================
+   SEPARADOR INFERIOR
+   ========================================= */
+
+.w-footer__divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 75px 0 25px;
+
+  background: #333333;
+}
+
+/* =========================================
+   ZONA INFERIOR
+   ========================================= */
+
+.w-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+/* COPYRIGHT */
+
+.w-footer__copyright {
+  margin: 0;
+
+  color: #A5A5A5;
+
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   CRÉDITOS - LICO
+   ========================================= */
+
+.w-footer__credits {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 13px;
+}
+
+/* TEXTO DESARROLLO POR */
+
+.w-footer__credits span {
+  color: #A5A5A5;
+
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+/* ENLACE DEL LOGOTIPO */
+
+.w-footer__credits a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+}
+
+/* LOGOTIPO LICO */
+
+.w-footer__credits img {
+  display: block;
+
+  width: auto;
+  max-width: 135px;
+  height: 30px;
+
+  object-fit: contain;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* EFECTO HOVER */
+
+.w-footer__credits a:hover img {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   ACCESIBILIDAD
+   ========================================= */
+
+.w-footer a:focus-visible {
+  outline: 2px solid var(--footer-red-light);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+
+/* =========================================
+   RESPONSIVE - ESCRITORIO 4K
+   ========================================= */
+
+@media (min-width: 2560px) {
+
+  .w-footer__container {
+    max-width: 1600px;
+    padding-top: 115px;
+  }
+
+  .w-footer__logo {
+    width: 330px;
+  }
+
+  .w-footer__column h2 {
+    font-size: 23px;
+  }
+
+  .w-footer__column a {
+    font-size: 16px;
+  }
+
+  .w-footer__description {
+    font-size: 16px;
+  }
+}
+
+/* =========================================
+   TABLET HORIZONTAL
+   ========================================= */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  .w-footer__grid {
+    gap: 35px;
+
+    grid-template-columns:
+      minmax(220px, 1.5fr)
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .w-footer__logo {
+    width: 230px;
+  }
+}
+
+/* =========================================
+   TABLET VERTICAL
+   ========================================= */
+
+@media (min-width: 641px) and (max-width: 1023px) {
+
+  .w-footer__container {
+    width: calc(100% - 80px);
+    padding-top: 75px;
+  }
+
+  .w-footer__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 45px 60px;
+  }
+
+  .w-footer__logo {
+    width: 250px;
+  }
+
+  .w-footer__divider {
+    margin-top: 60px;
+  }
+}
+
+/* =========================================
+   MÓVIL VERTICAL Y HORIZONTAL
+   ========================================= */
+
+@media (max-width: 640px) {
+
+  .w-footer__container {
+    width: calc(100% - 44px);
+    padding: 65px 0 30px;
+  }
+
+  .w-footer__grid {
+    grid-template-columns: 1fr;
+
+    gap: 43px;
+  }
+
+  .w-footer__brand {
+    align-items: flex-start;
+  }
+
+  .w-footer__logo {
+    width: 230px;
+  }
+
+  .w-footer__slogan {
+    margin-top: 20px;
+    font-size: 21px;
+  }
+
+  .w-footer__description {
+    max-width: 300px;
+    font-size: 13px;
+  }
+
+  .w-footer__column h2 {
+    margin-bottom: 20px;
+    font-size: 19px;
+  }
+
+  .w-footer__column ul {
+    gap: 15px;
+  }
+
+  .w-footer__column a {
+    font-size: 14px;
+  }
+
+  .w-footer__divider {
+    margin: 55px 0 25px;
+  }
+
+  .w-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 25px;
+  }
+
+  .w-footer__credits {
+    justify-content: flex-start;
+  }
+
+  .w-footer__credits img {
+    max-width: 125px;
+    height: 28px;
+  }
+}
+
+/* =========================================
+   MOVIMIENTO REDUCIDO
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .w-footer__logo img,
+  .w-footer__column a,
+  .w-footer__credits img {
+    transition: none;
+    transform: none;
+  }
+}
